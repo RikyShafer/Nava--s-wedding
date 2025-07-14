@@ -12,26 +12,36 @@
     }
 
     html, body {
-      width: 100%;
       height: 100%;
-      overflow: hidden; /* לא מאפשר גלילה */
+      width: 100%;
       background-color: #f0f0f0;
       font-family: 'Dancing Script', cursive;
+      overflow: hidden; /* לא מאפשר גלילה */
+    }
+
+    body {
       display: flex;
       justify-content: center;
       align-items: center;
+      flex-direction: column;
     }
 
-.countdown-container {
-  width: 90%;
-  max-width: 400px;
-  aspect-ratio: 3 / 4;
-  position: relative;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-  transform: scale(0.92); /* מוסיף הקטנה עדינה */
-}
+    .countdown-container {
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+      height: 90vh; /* גובה נוח */
+      position: relative;
+    }
+
+    .rounded-background {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
 
     .wedding-image {
       width: 100%;
@@ -43,14 +53,19 @@
     .text-content {
       position: absolute;
       top: 30%;
-      left: 50%;
-      transform: translateX(-50%);
+      width: 100%;
       text-align: center;
       color: #FFD700;
       text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
       display: flex;
       flex-direction: column;
+      align-items: center;
       gap: 10px;
+      padding: 0 10px;
+    }
+
+    .text-content p {
+      white-space: nowrap;
     }
 
     .gold-text {
@@ -93,19 +108,20 @@
       color: #ffffff;
     }
 
-    .copyright {
-      position: absolute;
-      bottom: 5px;
-      right: 10px;
-      font-size: 0.7rem;
-      color: #fff;
-      direction: rtl;
-      font-family: Arial, sans-serif;
-      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
-    }
+   .copyright {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  font-size: 0.8rem;
+  color: #333;
+  direction: rtl;
+  font-family: Arial, sans-serif;
+  text-align: right;
+  z-index: 10;
+}
 
     .copyright a {
-      color: #fff;
+      color: #007bff;
       text-decoration: none;
     }
 
@@ -115,7 +131,7 @@
 
     @media (max-width: 480px) {
       .text-content {
-        top: 25%;
+        top: 40%;
         gap: 5px;
       }
 
@@ -138,40 +154,47 @@
       .label {
         font-size: 0.8rem;
       }
+
+      .countdown-container {
+        height: 85vh;
+      }
     }
   </style>
 </head>
 <body>
   <div class="countdown-container">
-    <img src="image_Nava.jpg" alt="Motty & Nava" class="wedding-image" />
-    <div class="text-content">
-      <p class="names gold-text">Motty & Nava</p>
-      <p class="getting-married gold-text">G-e-t-t-i-n-g m-a-r-r-i-e-d</p>
-      <p class="footer gold-text">The wedding at...</p>
+    <div class="rounded-background">
+      <img src="image_Nava.jpg" alt="Motty & Nava" class="wedding-image" />
+      <div class="text-content">
+        <p class="names gold-text">Motty & Nava</p>
+        <p class="getting-married gold-text">G-e-t-t-i-n-g m-a-r-r-i-e-d</p>
+        <p class="footer gold-text">The wedding at...</p>
+      </div>
+      <div id="countdown" class="countdown">
+        <div class="countdown-item">
+          <span id="days">0</span>
+          <span class="label">ימים</span>
+        </div>
+        <div class="countdown-item">
+          <span id="hours">0</span>
+          <span class="label">שעות</span>
+        </div>
+        <div class="countdown-item">
+          <span id="minutes">0</span>
+          <span class="label">דקות</span>
+        </div>
+        <div class="countdown-item">
+          <span id="seconds">0</span>
+          <span class="label">שניות</span>
+        </div>
+      </div>
     </div>
-    <div id="countdown" class="countdown">
-      <div class="countdown-item">
-        <span id="days">0</span>
-        <span class="label">ימים</span>
-      </div>
-      <div class="countdown-item">
-        <span id="hours">0</span>
-        <span class="label">שעות</span>
-      </div>
-      <div class="countdown-item">
-        <span id="minutes">0</span>
-        <span class="label">דקות</span>
-      </div>
-      <div class="countdown-item">
-        <span id="seconds">0</span>
-        <span class="label">שניות</span>
-      </div>
-    </div>
-    <div class="copyright">
-      <p>כל הזכויות שמורות לריקי |
-        <a href="mailto:r8524409@gmail.com">צור קשר</a>
-      </p>
-    </div>
+  </div>
+
+  <div class="copyright">
+    <p>כל הזכויות שמורות לריקי | 
+      <a href="https://mail.google.com/mail/?view=cm&fs=1&to=r8524409@gmail.com&su=היי ריקי הגעתי אליך בקשר ל..." target="_blank">ליצירת קשר</a>
+    </p>
   </div>
 
   <script>
