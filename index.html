@@ -11,61 +11,45 @@
       box-sizing: border-box;
     }
 
-    html {
-      height: 100%;
+    html, body {
       width: 100%;
-      overflow: hidden; /* מונע גלילה */
+      height: 100%;
+      overflow: hidden; /* לא מאפשר גלילה */
       background-color: #f0f0f0;
       font-family: 'Dancing Script', cursive;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
-
-   body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-top: 60px; /* מוסיף רווח למסכים קטנים */
-  padding-bottom: 60px; /* מוסיף רווח למסכים קטנים */
-  margin-top: 60px;
-  margin-bottom: 60px;
-}
 
 .countdown-container {
-  width: 100%;
-  max-width: 500px;
-  text-align: center;
+  width: 90%;
+  max-width: 400px;
+  aspect-ratio: 3 / 4;
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  transform: scale(0.92); /* מוסיף הקטנה עדינה */
 }
 
-.wedding-image {
-  width: 100%;
-  max-width: 100%;
-  height: auto;
-  display: block;
- 
-}
-
-
-
-    .rounded-background {
-      position: relative;
-      width: 80%;
-      margin: 0 auto; /* מרכז את התמונה */
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-        
+    .wedding-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
-
 
     .text-content {
       position: absolute;
-      top: 35%;
-      width: 100%;
+      top: 30%;
+      left: 50%;
+      transform: translateX(-50%);
       text-align: center;
       color: #FFD700;
       text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
       display: flex;
       flex-direction: column;
-      align-items: center;
       gap: 10px;
     }
 
@@ -110,18 +94,18 @@
     }
 
     .copyright {
-      position: fixed;
-      bottom: 10px;
+      position: absolute;
+      bottom: 5px;
       right: 10px;
-      font-size: 0.8rem;
-      color: #333;
+      font-size: 0.7rem;
+      color: #fff;
       direction: rtl;
       font-family: Arial, sans-serif;
       text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
     }
 
     .copyright a {
-      color: #007bff;
+      color: #fff;
       text-decoration: none;
     }
 
@@ -129,86 +113,63 @@
       text-decoration: underline;
     }
 
-@media (max-width: 480px) {
-  .text-content {
-    top: 45%;
-    gap: 5px;
-  }
+    @media (max-width: 480px) {
+      .text-content {
+        top: 25%;
+        gap: 5px;
+      }
 
-  .names {
-    font-size: 1.4rem;
-  }
+      .names {
+        font-size: 1.4rem;
+      }
 
-  .getting-married {
-    font-size: 1rem;
-  }
+      .getting-married {
+        font-size: 1rem;
+      }
 
-  .footer {
-    font-size: 1.1rem;
-  }
+      .footer {
+        font-size: 1.1rem;
+      }
 
-  .countdown-item {
-    font-size: 1.2rem;
-  }
+      .countdown-item {
+        font-size: 1.2rem;
+      }
 
-  .label {
-    font-size: 0.8rem;
-  }
-
-   body {
-    align-items: flex-start;
-    padding-top: 10px;
-  }
-
-  .countdown-container {
-    width: 100%;
-  }
-
-  .rounded-background {
-    width: 90%;
-    margin: 0 auto;
-  }
-
-  .text-content {
-    top: 25%;
-  }
-}
+      .label {
+        font-size: 0.8rem;
+      }
+    }
   </style>
 </head>
 <body>
   <div class="countdown-container">
-    <div class="rounded-background">
-      <img src="image_Nava.jpg" alt="Motty & Nava" class="wedding-image" />
-      <div class="text-content">
-        <p class="names gold-text">Motty & Nava</p>
-        <p class="getting-married gold-text">G-e-t-t-i-n-g m-a-r-r-i-e-d</p>
-        <p class="footer gold-text">The wedding at...</p>
+    <img src="image_Nava.jpg" alt="Motty & Nava" class="wedding-image" />
+    <div class="text-content">
+      <p class="names gold-text">Motty & Nava</p>
+      <p class="getting-married gold-text">G-e-t-t-i-n-g m-a-r-r-i-e-d</p>
+      <p class="footer gold-text">The wedding at...</p>
+    </div>
+    <div id="countdown" class="countdown">
+      <div class="countdown-item">
+        <span id="days">0</span>
+        <span class="label">ימים</span>
       </div>
-      <div id="countdown" class="countdown">
-        <div class="countdown-item">
-          <span id="days">0</span>
-          <span class="label">ימים</span>
-        </div>
-        <div class="countdown-item">
-          <span id="hours">0</span>
-          <span class="label">שעות</span>
-        </div>
-        <div class="countdown-item">
-          <span id="minutes">0</span>
-          <span class="label">דקות</span>
-        </div>
-        <div class="countdown-item">
-          <span id="seconds">0</span>
-          <span class="label">שניות</span>
-        </div>
+      <div class="countdown-item">
+        <span id="hours">0</span>
+        <span class="label">שעות</span>
+      </div>
+      <div class="countdown-item">
+        <span id="minutes">0</span>
+        <span class="label">דקות</span>
+      </div>
+      <div class="countdown-item">
+        <span id="seconds">0</span>
+        <span class="label">שניות</span>
       </div>
     </div>
-
     <div class="copyright">
-      <p>כל הזכויות שמורות לריקי</p>
-      <p>
-        ליצירת קשר,
-        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=r8524409@gmail.com&su=היי ריקי הגעתי אליך בקשר ל..." target="_blank">לחצו</a>
+      <p>כל הזכויות שמורות לריקי |
+        <a href="mailto:r8524409@gmail.com">צור קשר</a>
       </p>
     </div>
   </div>
