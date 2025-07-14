@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ספירה לאחור לחתונה</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      height: 100%;
+      width: 100%;
+      overflow: hidden; /* מונע גלילה */
+      background-color: #f0f0f0;
+      font-family: 'Dancing Script', cursive;
+    }
+
+   body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 60px; /* מוסיף רווח למסכים קטנים */
+  padding-bottom: 60px; /* מוסיף רווח למסכים קטנים */
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
+
+.countdown-container {
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+}
+
+.wedding-image {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  display: block;
+ 
+}
+
+
+
+    .rounded-background {
+      position: relative;
+      width: 80%;
+      margin: 0 auto; /* מרכז את התמונה */
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        
+    }
+
+
+    .text-content {
+      position: absolute;
+      top: 35%;
+      width: 100%;
+      text-align: center;
+      color: #FFD700;
+      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .gold-text {
+      background: linear-gradient(90deg, #FFD700, #FFA500, #FFD700);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .names {
+      font-size: 2.2rem;
+    }
+
+    .getting-married {
+      font-size: 1.4rem;
+      letter-spacing: 0.2rem;
+    }
+
+    .footer {
+      font-size: 1.5rem;
+    }
+
+    .countdown {
+      position: absolute;
+      bottom: 20px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .countdown-item {
+      font-size: 2.2rem;
+      font-weight: bold;
+      color: #ffffff;
+    }
+
+    .label {
+      display: block;
+      font-size: 1rem;
+      color: #ffffff;
+    }
+
+    .copyright {
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      font-size: 0.8rem;
+      color: #333;
+      direction: rtl;
+      font-family: Arial, sans-serif;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+    }
+
+    .copyright a {
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    .copyright a:hover {
+      text-decoration: underline;
+    }
+
+@media (max-width: 480px) {
+  .text-content {
+    top: 45%;
+    gap: 5px;
+  }
+
+  .names {
+    font-size: 1.4rem;
+  }
+
+  .getting-married {
+    font-size: 1rem;
+  }
+
+  .footer {
+    font-size: 1.1rem;
+  }
+
+  .countdown-item {
+    font-size: 1.2rem;
+  }
+
+  .label {
+    font-size: 0.8rem;
+  }
+
+   body {
+    align-items: flex-start;
+    padding-top: 10px;
+  }
+
+  .countdown-container {
+    width: 100%;
+  }
+
+  .rounded-background {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .text-content {
+    top: 25%;
+  }
+}
+  </style>
+</head>
+<body>
+  <div class="countdown-container">
+    <div class="rounded-background">
+      <img src="image_Nava.jpg" alt="Motty & Nava" class="wedding-image" />
+      <div class="text-content">
+        <p class="names gold-text">Motty & Nava</p>
+        <p class="getting-married gold-text">G-e-t-t-i-n-g m-a-r-r-i-e-d</p>
+        <p class="footer gold-text">The wedding at...</p>
+      </div>
+      <div id="countdown" class="countdown">
+        <div class="countdown-item">
+          <span id="days">0</span>
+          <span class="label">ימים</span>
+        </div>
+        <div class="countdown-item">
+          <span id="hours">0</span>
+          <span class="label">שעות</span>
+        </div>
+        <div class="countdown-item">
+          <span id="minutes">0</span>
+          <span class="label">דקות</span>
+        </div>
+        <div class="countdown-item">
+          <span id="seconds">0</span>
+          <span class="label">שניות</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="copyright">
+      <p>כל הזכויות שמורות לריקי</p>
+      <p>
+        ליצירת קשר,
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=r8524409@gmail.com&su=היי ריקי הגעתי אליך בקשר ל..." target="_blank">לחצו</a>
+      </p>
+    </div>
+  </div>
+
+  <script>
+    const weddingDate = new Date("2025-10-23T18:30:00");
+
+    function updateCountdown() {
+      const now = new Date();
+      const timeDifference = weddingDate - now;
+
+      const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+      document.getElementById("seconds").textContent = seconds;
+      document.getElementById("minutes").textContent = minutes;
+      document.getElementById("hours").textContent = hours;
+      document.getElementById("days").textContent = days;
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+  </script>
+</body>
+</html>
